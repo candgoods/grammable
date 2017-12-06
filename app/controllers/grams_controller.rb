@@ -7,7 +7,7 @@ class GramsController < ApplicationController
   end
 
   def create
-    @gram = Quote.create(gram_params)
+    @gram = Gram.create(gram_params)
     redirect_to root_path
   end
 end
