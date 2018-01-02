@@ -2,6 +2,7 @@ class GramsController < ApplicationController
   before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy]
 
   def index
+    @grams = Gram.all
   end
 
   def new
@@ -54,14 +55,9 @@ class GramsController < ApplicationController
     redirect_to root_path
   end
 
-end
-
 private
 
-def render_not_found(status=:not_found)
-  render plain: '#{status.to_s.titleize} :(', status: status
-end
-
-def gram_params
-  params.require(:gram).permit(:message)
+  def gram_params
+    params.require(:gram).permit(:message, :picture)
+  end
 end
